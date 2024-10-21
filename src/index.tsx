@@ -2,12 +2,11 @@ import { ReactNode } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
-import { Tag } from './components/SingleTag';
-import { KEYS, SEPARATORS } from './components/constants';
 import ReactTags from './components/ReactTags';
+import { Tag } from './components/SingleTag';
 import {
   DEFAULT_LABEL_FIELD,
-  DEFAULT_PLACEHOLDER,
+  DEFAULT_PLACEHOLDER, KEYS, SEPARATORS
 } from './components/constants';
 
 export interface ReactTagsWrapperProps {
@@ -119,6 +118,7 @@ export interface ReactTagsWrapperProps {
    */
   handleInputBlur?: (
     value: string,
+    index: number,
     event: React.FocusEvent<HTMLInputElement>
   ) => void;
   /**
@@ -300,6 +300,5 @@ const WithContext = ({ ...props }: ReactTagsWrapperProps) => (
     <ReactTagsWrapper {...props} />
   </DndProvider>
 );
-export { WithContext };
-export { ReactTagsWrapper as WithOutContext };
-export { KEYS, SEPARATORS };
+export { KEYS, SEPARATORS, WithContext, ReactTagsWrapper as WithOutContext };
+

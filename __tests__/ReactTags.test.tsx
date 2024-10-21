@@ -1,12 +1,12 @@
-import React from 'react';
 import { expect } from 'chai';
+import React from 'react';
 
-import { spy, stub, createSandbox } from 'sinon';
+import { createSandbox, spy, stub } from 'sinon';
 
 import { WithContext as ReactTags } from '../src/index';
 
-import { KEYS, SEPARATORS } from '../src/components/constants';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { KEYS, SEPARATORS } from '../src/components/constants';
 import type { Tag } from '../src/components/SingleTag';
 
 
@@ -228,7 +228,7 @@ describe('Test ReactTags', () => {
     // Will also be invoked for when the input has a value.
     fireEvent.blur(screen.getByTestId('input'));
     expect(handleInputBlur.callCount).to.equal(1);
-    expect(handleInputBlur.args[0].length).to.equal(2);
+    expect(handleInputBlur.args[0].length).to.equal(3);
     expect(handleInputBlur.calledWith('Example')).to.be.true;
     expect(screen.getByTestId('input').textContent).to.be.empty;
   });

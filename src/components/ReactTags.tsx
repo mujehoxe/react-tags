@@ -1,21 +1,21 @@
-import React, { useEffect, createRef, useRef, useState, Fragment } from 'react';
-import { uniq } from 'lodash-es';
-import ClearAllTags from './ClearAllTags';
-import Suggestions from './Suggestions';
 import ClassNames from 'classnames';
-import { SingleTag } from './SingleTag';
+import { uniq } from 'lodash-es';
+import React, { createRef, Fragment, useEffect, useRef, useState } from 'react';
+import ClearAllTags from './ClearAllTags';
 import type { Tag } from './SingleTag';
+import { SingleTag } from './SingleTag';
+import Suggestions from './Suggestions';
 
 import { buildRegExpFromDelimiters, getKeyCodeFromSeparator } from './utils';
 
 //Constants
-import {
-  KEYS,
-  DEFAULT_CLASSNAMES,
-  INPUT_FIELD_POSITIONS,
-  ERRORS,
-} from './constants';
 import type { ReactTagsWrapperProps } from '../';
+import {
+  DEFAULT_CLASSNAMES,
+  ERRORS,
+  INPUT_FIELD_POSITIONS,
+  KEYS,
+} from './constants';
 
 /**
  * Props for the ReactTags component.
@@ -249,7 +249,7 @@ const ReactTags = (props: ReactTagsProps) => {
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = event.target.value;
     if (props.handleInputBlur) {
-      props.handleInputBlur(value, event);
+      props.handleInputBlur(value, currentEditIndex, event);
       if (textInput.current) {
         textInput.current.value = '';
       }
